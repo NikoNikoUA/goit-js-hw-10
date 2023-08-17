@@ -1,0 +1,1 @@
+{"mappings":"ACAA,uBAIA","sources":["index.131d2292.css","src/styles.css"],"sourcesContent":[".cat-info {\n  display: flex;\n}\n\n.image {\n  margin-right: 10px;\n}\n\n/*# sourceMappingURL=index.131d2292.css.map */\n",".cat-info {\n  display: flex;\n}\n\n.image {\n  margin-right: 10px;\n}\n"],"names":[],"version":3,"file":"index.131d2292.css.map"}
