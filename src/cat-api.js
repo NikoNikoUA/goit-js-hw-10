@@ -12,8 +12,11 @@ const options = {
 };
 
 const select = document.querySelector('.breed-select');
+const loadingText = document.querySelector('.loader');
+const catInfoBlock = document.querySelector('.cat-info');
 
 export function fetchBreeds() {
+  hideSelect();
   const url = 'https://api.thecatapi.com/v1/breeds';
   return fetch(url, options).then(response => {
     return response.json();
@@ -25,9 +28,9 @@ export function renderSelectOptions(cat) {
     const markup = `<option value="${id}">${name}</option>`;
     select.insertAdjacentHTML('beforeend', markup);
   });
+  showSelect();
+  disableLoading();
 }
-
-const catInfoBlock = document.querySelector('.cat-info');
 
 export function fetchCatByBreed(breedId) {
   const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`;
@@ -53,4 +56,21 @@ export function renderCatCard(breeds) {
     .join('');
 
   catInfoBlock.innerHTML = catCard;
+  disableLoading();
+}
+
+export function disableLoading() {
+  loadingText.classList.add('is-hidden');
+}
+
+export function enableLoading() {
+  loadingText.classList.remove('is-hidden');
+}
+
+function hideSelect() {
+  select.classList.add('is-hidden');
+}
+
+function showSelect() {
+  select.classList.remove('is-hidden');
 }
