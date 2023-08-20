@@ -8,7 +8,6 @@ import {
   disableLoading,
   enableLoading,
 } from './cat-api.js';
-// import SlimSelect from 'slim-select';
 
 axios.defaults.headers.common['x-api-key'] =
   'live_V6WakLVeDUYuV0CwG8EQT8MgErA5ezIVaBC7k1nytUEerMjpIg4x0JA7QTVc2Ymn';

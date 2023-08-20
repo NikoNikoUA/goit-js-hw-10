@@ -41,15 +41,17 @@ export function fetchCatByBreed(breedId) {
 }
 
 export function renderCatCard(breeds) {
+  const breedInfo = breeds[0].breeds[0];
+  console.log(breedInfo);
   const catCard = breeds
     .map(breed => {
       return `<div class="image">
-  <img src="${breed.url}", alt="${breed.name}" width="500">
+  <img src="${breed.url}", alt="${breedInfo.name}" width="500">
   </div>
-  <div>
-  <h2>${breed.name}</h2>
-  <p>${breed.description}</p>
-  <p>${breed.temperament}</p>
+  <div class="description">
+  <h2>${breedInfo.name}</h2>
+  <p>${breedInfo.description}</p>
+  <p><b>Temperament:<b/>${breedInfo.temperament}</p>
 </div>
 `;
     })
