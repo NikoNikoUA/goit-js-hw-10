@@ -1,15 +1,11 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import {
-  fetchBreeds,
-  fetchCatByBreed,
-  renderSelectOptions,
-  renderCatCard,
-  disableLoading,
-  enableLoading,
-} from './cat-api.js';
+import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
+import { disableLoading, enableLoading } from './loader.js';
+import { renderCatCard, renderSelectOptions } from './markup-render.js';
 
 const errorText = document.querySelector('.error');
 const select = document.querySelector('.breed-select');
+const catInfoBlock = document.querySelector('.cat-info');
 
 select.addEventListener('change', onBreedSelect);
 
@@ -19,6 +15,7 @@ fetchBreeds()
   .then(renderSelectOptions)
   .catch(error => {
     if (error) {
+      catInfoBlock.classList.add('is-hidden');
       disableLoading();
       Notify.failure('Oops! Something went wrong! Try reloading the page!', {
         width: '400px',
@@ -28,13 +25,16 @@ fetchBreeds()
     }
   });
 
-function onBreedSelect() {
+function onBreedSelect(event) {
+  event.preventDefault();
   enableLoading();
+  catInfoBlock.classList.add('is-hidden');
   const breedId = select.value;
   fetchCatByBreed(breedId)
     .then(renderCatCard)
     .catch(error => {
       if (error) {
+        catInfoBlock.classList.add('is-hidden');
         disableLoading();
         Notify.failure('Oops! Something went wrong! Try reloading the page!', {
           width: '400px',
