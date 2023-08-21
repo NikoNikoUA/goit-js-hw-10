@@ -1,4 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import SlimSelect from 'slim-select';
+// import 'slim-select/dist/slimselect.css';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import { disableLoading, enableLoading } from './loader.js';
 import { renderCatCard, renderSelectOptions } from './markup-render.js';
@@ -8,6 +10,14 @@ const select = document.querySelector('.breed-select');
 const catInfoBlock = document.querySelector('.cat-info');
 
 select.addEventListener('change', onBreedSelect);
+
+// new SlimSelect({
+//   select: 'select',
+//   select: '#single',
+//   settings: {
+//     allowDeselect: true,
+//   },
+// });
 
 errorText.classList.add('is-hidden');
 
